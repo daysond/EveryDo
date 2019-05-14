@@ -24,8 +24,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.todoList = [[NSMutableArray alloc]initWithObjects:[NSMutableArray new],[NSMutableArray new],[NSMutableArray new],[NSMutableArray new], nil];
-    self.setionTitles = @[@"Critical", @"Important", @"Normal",@"Low"];
+    self.todoList = [[NSMutableArray alloc]initWithObjects:[NSMutableArray new],[NSMutableArray new],[NSMutableArray new],[NSMutableArray new],[NSMutableArray new], nil];
+    self.setionTitles = @[@"Critical", @"Important", @"Normal",@"Low",@"Completed"];
     
     Todo *todo = [[Todo alloc]initWithTitle:@"first" description:@"first thing do to" priorityLevel:0];
     [self addTodo:todo WithPriority:todo.priorityLevel];
@@ -83,18 +83,57 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
    
     NSString *cellIdentifier = @"TodiListCell";
-    TodoListTableViewCell *cell = [self.todoListTableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    TodoListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if (!cell) {
         cell = [[TodoListTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
     
     NSString* todoTitle = self.todoList[indexPath.section][indexPath.row].title;
     NSString* todoDescription = self.todoList[indexPath.section][indexPath.row].todoDescription;
-    NSLog(@"t:%@, d:%@",todoTitle,todoDescription);
     [cell setTodoTitle:todoTitle todoDescription:todoDescription];
+    
     return cell;
 }
 
+- (NSArray<UITableViewRowAction *> *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath{
+
+    if (indexPath.section < 4) {
+
+        UITableViewRowAction *mark = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleNormal title:@"Done" handler:^(UITableViewRowAction *action, NSIndexPath *indexPath){
+            
+            self.todoList[indexPath.section][indexPath.row].isCompleted = YES;
+            [self.todoList[4] addObject:self.todoList[indexPath.section][indexPath.row]];
+            [self.todoListTableView reloadData];
+            [self.todoList[indexPath.section] removeObject: self.todoList[indexPath.section][indexPath.row]];
+            [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+            
+        }];
+        mark.backgroundColor = [UIColor blueColor];
+        
+        
+        return @[mark];
+    } else {
+        
+        UITableViewRowAction *mark = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleNormal title:@"Undo" handler:^(UITableViewRowAction *action, NSIndexPath *indexPath){
+            
+            self.todoList[indexPath.section][indexPath.row].isCompleted = NO;
+            [self addTodo:self.todoList[indexPath.section][indexPath.row] WithPriority:self.todoList[indexPath.section][indexPath.row].priorityLevel];
+             [self.todoListTableView reloadData];
+            [self.todoList[4] removeObject:self.todoList[indexPath.section][indexPath.row]];
+            [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+
+            
+            
+        }];
+        mark.backgroundColor = [UIColor blueColor];
+        
+        
+        return @[mark];
+        
+    }
+    
+    
+}
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {

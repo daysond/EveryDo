@@ -23,7 +23,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.level = 1;
+    self.level = 2;
+    [self.normalButton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
 
     // Do any additional setup after loading the view.
 }
