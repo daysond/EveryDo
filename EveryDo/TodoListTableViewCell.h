@@ -13,9 +13,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 @interface TodoListTableViewCell : UITableViewCell
-@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
-@property (weak, nonatomic) IBOutlet UILabel *subtitleLabel;
 
+@property (nonatomic) NSString* todoDescription;
+@property (weak, nonatomic) IBOutlet UILabel *todoTitleLabel;
+
+
+-(void)setTodoTitle:(NSString*) todoTitle todoDescription: (NSString*) todoDescription;
 
 @end
 

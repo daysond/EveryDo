@@ -9,9 +9,13 @@
 #import "ViewController.h"
 #import "TodoListTableViewCell.h"
 #import "AddTodoViewController.h"
+#import "DetailViewController.h"
+#import "Todo.h"
 
 @interface ViewController () <UITableViewDataSource,UITableViewDelegate,AddTodoDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *todoListTableView;
+@property (nonatomic) NSMutableArray <NSMutableArray<Todo*>*> *todoList;
+@property (nonatomic) NSArray <NSString*> *setionTitles;
 
 @end
 
@@ -19,39 +23,110 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    
+    self.todoList = [[NSMutableArray alloc]initWithObjects:[NSMutableArray new],[NSMutableArray new],[NSMutableArray new],[NSMutableArray new], nil];
+    self.setionTitles = @[@"Critical", @"Important", @"Normal",@"Low"];
+    
+    Todo *todo = [[Todo alloc]initWithTitle:@"first" description:@"first thing do to" priorityLevel:0];
+    [self addTodo:todo WithPriority:todo.priorityLevel];
+    todo = [[Todo alloc]initWithTitle:@"second" description:@"second thing do to" priorityLevel:1];
+    [self addTodo:todo WithPriority:todo.priorityLevel];
+    todo = [[Todo alloc]initWithTitle:@"third" description:@"third thing do to" priorityLevel:2];
+    [self addTodo:todo WithPriority:todo.priorityLevel];
 
+    NSLog(@"hii %@",self.todoList);
+    
 }
+
+-(void)viewWillAppear:(BOOL)animated {
+    
+    [super viewWillAppear:NO];
+    [self.todoListTableView reloadData];
+}
+
+#pragma mark helper
+
+-(void)addTodo: (Todo*) todo WithPriority: (NSInteger) level {
+    switch (level) {
+        case 0:
+            [self.todoList[0] addObject:todo];
+            break;
+        case 1:
+            [self.todoList[1] addObject:todo];
+            break;
+        case 2:
+            [self.todoList[2] addObject:todo];
+            break;
+        case 3:
+            [self.todoList[3] addObject:todo];
+            break;
+        default:
+            break;
+    }
+}
+
+#pragma mark table view set up
+
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return self.todoList.count;
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 10;
+    return self.todoList[section].count;
+}
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    return self.setionTitles[section];
 }
 
+#pragma mark cell set up
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+   
     NSString *cellIdentifier = @"TodiListCell";
     TodoListTableViewCell *cell = [self.todoListTableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if (!cell) {
         cell = [[TodoListTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
-    cell.titleLabel.text = @"hiiii";
+    
+    NSString* todoTitle = self.todoList[indexPath.section][indexPath.row].title;
+    NSString* todoDescription = self.todoList[indexPath.section][indexPath.row].todoDescription;
+    NSLog(@"t:%@, d:%@",todoTitle,todoDescription);
+    [cell setTodoTitle:todoTitle todoDescription:todoDescription];
     return cell;
 }
 
-//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath;
+
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    
+    
+}
+
+#pragma mark segue
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
-    AddTodoViewController *dvc = segue.destinationViewController;
-    dvc.addTodoDelegate = self;
+    if ([segue.identifier isEqualToString:@"addTodoSegue"]) {
+        AddTodoViewController *dvc = [(UINavigationController*)segue.destinationViewController topViewController];
+        dvc.addTodoDelegate = self;
+    }
+    
+    if ([segue.identifier isEqualToString:@"todoDetail"]) {
+        DetailViewController *dvc = segue.destinationViewController;
+        TodoListTableViewCell* cell = sender;
+        dvc.todoDescription = cell.todoDescription;
+        
+    }
 
-    NSLog(@"segue ????");
 }
 
-
-
+#pragma mark delegate
 
 - (void)addTodoWithTitle:(nonnull NSString *)title description:(nonnull NSString *)description priority:(NSInteger)priorityLevel {
-    NSLog(@"calling delegate?");
+    Todo *todo = [[Todo alloc]initWithTitle:title description:description priorityLevel:priorityLevel];
+    [self addTodo:todo WithPriority:todo.priorityLevel];
+    NSLog(@"todolist: %@",self.todoList);
 }
 
 

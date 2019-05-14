@@ -8,17 +8,32 @@
 
 #import "TodoListTableViewCell.h"
 
+@interface TodoListTableViewCell ()
+
+
+
+@end
+
 @implementation TodoListTableViewCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+
+    
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
+}
+
+-(void)setTodoTitle:(NSString*) todoTitle todoDescription: (NSString*) todoDescription {
+    
+    self.todoDescription = todoDescription;
+    self.todoTitleLabel .text = todoTitle;
+
 }
 
 @end

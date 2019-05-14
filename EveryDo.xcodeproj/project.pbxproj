@@ -17,6 +17,7 @@
 		75BABDDA228A566800EAA3DC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75BABDD8228A566800EAA3DC /* LaunchScreen.storyboard */; };
 		75BABDDD228A566800EAA3DC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 75BABDDC228A566800EAA3DC /* main.m */; };
 		75BABDE5228A568500EAA3DC /* Todo.m in Sources */ = {isa = PBXBuildFile; fileRef = 75BABDE4228A568500EAA3DC /* Todo.m */; };
+		ED2301AA228B143B00F9BF3A /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED2301A9228B143B00F9BF3A /* DetailViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,8 @@
 		75BABDDC228A566800EAA3DC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		75BABDE3228A568500EAA3DC /* Todo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Todo.h; sourceTree = "<group>"; };
 		75BABDE4228A568500EAA3DC /* Todo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Todo.m; sourceTree = "<group>"; };
+		ED2301A8228B143B00F9BF3A /* DetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
+		ED2301A9228B143B00F9BF3A /* DetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,13 +76,15 @@
 				75BABDCB228A566700EAA3DC /* AppDelegate.m */,
 				75BABDCD228A566700EAA3DC /* ViewController.h */,
 				75BABDCE228A566700EAA3DC /* ViewController.m */,
+				7531B6E8228A57A8003BFB10 /* TodoListTableViewCell.h */,
+				7531B6E9228A57A8003BFB10 /* TodoListTableViewCell.m */,
 				75BABDE3228A568500EAA3DC /* Todo.h */,
 				75BABDE4228A568500EAA3DC /* Todo.m */,
 				75BABDD0228A566700EAA3DC /* Main.storyboard */,
 				7531B6EB228A5EAA003BFB10 /* AddTodoViewController.h */,
 				7531B6EC228A5EAA003BFB10 /* AddTodoViewController.m */,
-				7531B6E8228A57A8003BFB10 /* TodoListTableViewCell.h */,
-				7531B6E9228A57A8003BFB10 /* TodoListTableViewCell.m */,
+				ED2301A8228B143B00F9BF3A /* DetailViewController.h */,
+				ED2301A9228B143B00F9BF3A /* DetailViewController.m */,
 				75BABDD6228A566800EAA3DC /* Assets.xcassets */,
 				75BABDD8228A566800EAA3DC /* LaunchScreen.storyboard */,
 				75BABDDB228A566800EAA3DC /* Info.plist */,
@@ -162,6 +167,7 @@
 				75BABDE5228A568500EAA3DC /* Todo.m in Sources */,
 				7531B6EA228A57A8003BFB10 /* TodoListTableViewCell.m in Sources */,
 				7531B6ED228A5EAA003BFB10 /* AddTodoViewController.m in Sources */,
+				ED2301AA228B143B00F9BF3A /* DetailViewController.m in Sources */,
 				75BABDCF228A566700EAA3DC /* ViewController.m in Sources */,
 				75BABDCC228A566700EAA3DC /* AppDelegate.m in Sources */,
 				75BABDDD228A566800EAA3DC /* main.m in Sources */,

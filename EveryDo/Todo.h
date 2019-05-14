@@ -14,8 +14,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic) NSString* title;
 @property (nonatomic) NSString* todoDescription;
-@property (nonatomic) NSInteger priorityNumber;
+@property (nonatomic) NSInteger priorityLevel;
 @property (nonatomic) BOOL isCompleted;
+
+- (instancetype)initWithTitle: (NSString*) title description:(NSString*) description priorityLevel: (NSInteger)level;
 
 @end
 

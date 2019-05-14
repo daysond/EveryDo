@@ -33,30 +33,30 @@
 - (IBAction)saveButtonTapped:(UIBarButtonItem *)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
     [self.addTodoDelegate addTodoWithTitle:self.titleTextField.text description:self.descriptionTextView.text priority:self.level];
-    NSLog(@"log:%@ %@",self.titleTextField.text, self.descriptionTextView.text);
+//    NSLog(@"log:%@ %@",self.titleTextField.text, self.descriptionTextView.text);
 }
 - (IBAction)priorityButtonTapped:(UIButton *)sender {
     self.level = sender.tag;
     switch (sender.tag) {
-        case 0:
+        case 3:
             [self.lowButton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
             [self.normalButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
             [self.importantButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
             [self.criticalButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
             break;
-        case 1:
+        case 2:
             [self.lowButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
             [self.normalButton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
             [self.importantButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
             [self.criticalButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
             break;
-        case 2:
+        case 1:
             [self.lowButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
             [self.normalButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
             [self.importantButton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
             [self.criticalButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
             break;
-        case 3:
+        case 0:
             [self.lowButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
             [self.normalButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
             [self.importantButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
