@@ -174,7 +174,7 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
     if ([segue.identifier isEqualToString:@"addTodoSegue"]) {
-        AddTodoViewController *dvc = [(UINavigationController*)segue.destinationViewController topViewController];
+        AddTodoViewController *dvc = segue.destinationViewController;
         dvc.addTodoDelegate = self;
     }
     

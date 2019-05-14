@@ -32,11 +32,11 @@
 #pragma mark IBActions
 
 - (IBAction)cancelButtonTapped:(UIBarButtonItem *)sender {
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (IBAction)saveButtonTapped:(UIBarButtonItem *)sender {
-    [self dismissViewControllerAnimated:YES completion:nil];
+     [self.navigationController popViewControllerAnimated:YES];
     [self.addTodoDelegate addTodoWithTitle:self.titleTextField.text description:self.descriptionTextView.text priority:self.level];
 }
 
