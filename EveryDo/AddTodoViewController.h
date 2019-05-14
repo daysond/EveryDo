@@ -10,7 +10,15 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@protocol AddTodoDelegate <NSObject>
+
+-(void)addTodoWithTitle:(NSString*) title description: (NSString*) description priority: (NSInteger) priorityLevel;
+
+@end
+
 @interface AddTodoViewController : ViewController
+
+@property (weak, nonatomic) id<AddTodoDelegate> addTodoDelegate;
 
 @end
 
