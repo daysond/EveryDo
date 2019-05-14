@@ -29,11 +29,9 @@
     // Configure the view for the selected state
 }
 
--(void)setTodoTitle:(NSString*) todoTitle todoDescription: (NSString*) todoDescription {
-    
-    self.todoDescription = todoDescription;
-    self.todoTitleLabel .text = todoTitle;
-
+-(void)addTodo:(Todo *)todo {
+    self.todo = todo;
+    self.todoTitleLabel.text = todo.title;
 }
 
 @end

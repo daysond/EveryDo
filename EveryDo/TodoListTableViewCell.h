@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Todo.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -14,11 +15,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface TodoListTableViewCell : UITableViewCell
 
-@property (nonatomic) NSString* todoDescription;
+@property (nonatomic) Todo* todo;
 @property (weak, nonatomic) IBOutlet UILabel *todoTitleLabel;
 
 
--(void)setTodoTitle:(NSString*) todoTitle todoDescription: (NSString*) todoDescription;
+-(void)addTodo:(Todo*) todo;
 
 @end
 

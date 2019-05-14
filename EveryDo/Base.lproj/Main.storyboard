@@ -66,13 +66,19 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="Slm-6X-K3l">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="ecR-Yl-FN8">
+                        <barButtonItem key="leftBarButtonItem" systemItem="add" id="ecR-Yl-FN8">
                             <connections>
                                 <segue destination="AeX-jx-HcW" kind="showDetail" identifier="addTodoSegue" id="VmZ-tm-Q9z"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Edit" id="WOY-ON-9G8">
+                            <connections>
+                                <action selector="editButtonTapped:" destination="BYZ-38-t0r" id="19h-DC-pbf"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="editButton" destination="WOY-ON-9G8" id="i2C-k5-yMz"/>
                         <outlet property="todoListTableView" destination="2Yo-RM-Zev" id="vGr-ww-6S2"/>
                     </connections>
                 </viewController>
@@ -105,7 +111,11 @@
                         <viewLayoutGuide key="safeArea" id="IPE-A6-1WI"/>
                     </view>
                     <navigationItem key="navigationItem" id="bfY-xI-NpW">
-                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="l4I-xz-GAA"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="l4I-xz-GAA">
+                            <connections>
+                                <segue destination="AeX-jx-HcW" kind="showDetail" identifier="editorSegue" id="p8d-5P-rsB"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="titleLabel" destination="Jv2-D7-lP7" id="Ktp-ox-jkT"/>
@@ -113,7 +123,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vwP-RL-KVO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1092" y="649.50738916256159"/>
+            <point key="canvasLocation" x="996" y="671"/>
         </scene>
         <!--Add Todo View Controller-->
         <scene sceneID="Ped-jx-ilM">
@@ -266,4 +276,7 @@
             <point key="canvasLocation" x="682" y="-35"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="VmZ-tm-Q9z"/>
+    </inferredMetricsTieBreakers>
 </document>

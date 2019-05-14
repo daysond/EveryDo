@@ -26,16 +26,20 @@
     self.level = 2;
     [self.normalButton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
 
-    // Do any additional setup after loading the view.
+
 }
+
+#pragma mark IBActions
+
 - (IBAction)cancelButtonTapped:(UIBarButtonItem *)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
+
 - (IBAction)saveButtonTapped:(UIBarButtonItem *)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
     [self.addTodoDelegate addTodoWithTitle:self.titleTextField.text description:self.descriptionTextView.text priority:self.level];
-//    NSLog(@"log:%@ %@",self.titleTextField.text, self.descriptionTextView.text);
 }
+
 - (IBAction)priorityButtonTapped:(UIButton *)sender {
     self.level = sender.tag;
     switch (sender.tag) {
@@ -72,14 +76,6 @@
     
 }
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
