@@ -23,12 +23,13 @@
     self.titleTextfield.text = self.todo.title;
     self.descriptionTextView.text = self.todo.todoDescription;
     self.datePicker.date = self.todo.deadline;
-    
-    // Do any additional setup after loading the view.
+
 }
+
 - (IBAction)datePickerChanged:(UIDatePicker *)sender {
     self.todo.deadline = sender.date;
 }
+
 - (IBAction)saveButtonTapped:(UIBarButtonItem *)sender {
     [self.navigationController popViewControllerAnimated:YES];
     self.todo.title = self.titleTextfield.text;

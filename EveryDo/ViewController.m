@@ -27,16 +27,10 @@
     
     [self.todoListTableView setEditing:NO];
     
-    self.todoList = [[NSMutableArray alloc]initWithObjects:[NSMutableArray new],[NSMutableArray new],[NSMutableArray new],[NSMutableArray new],[NSMutableArray new], nil];
     self.setionTitles = @[@"Critical", @"Important", @"Normal",@"Low",@"Completed"];
     
-    Todo *todo = [[Todo alloc]initWithTitle:@"first" description:@"first thing do to" priorityLevel:0];
-    [self addTodo:todo WithPriority:todo.priorityLevel];
-    todo = [[Todo alloc]initWithTitle:@"second" description:@"second thing do to" priorityLevel:1];
-    [self addTodo:todo WithPriority:todo.priorityLevel];
-    todo = [[Todo alloc]initWithTitle:@"third" description:@"third thing do to" priorityLevel:2];
-    [self addTodo:todo WithPriority:todo.priorityLevel];
-    
+    [self setupTodolist];
+
 }
 
 
@@ -65,6 +59,17 @@
         default:
             break;
     }
+}
+
+-(void)setupTodolist {
+    
+    self.todoList = [[NSMutableArray alloc]initWithObjects:[NSMutableArray new],[NSMutableArray new],[NSMutableArray new],[NSMutableArray new],[NSMutableArray new], nil];
+    Todo *todo = [[Todo alloc]initWithTitle:@"first" description:@"first thing do to" priorityLevel:0];
+    [self addTodo:todo WithPriority:todo.priorityLevel];
+    todo = [[Todo alloc]initWithTitle:@"second" description:@"second thing do to" priorityLevel:1];
+    [self addTodo:todo WithPriority:todo.priorityLevel];
+    todo = [[Todo alloc]initWithTitle:@"third" description:@"third thing do to" priorityLevel:2];
+    [self addTodo:todo WithPriority:todo.priorityLevel];
 }
 
 #pragma mark table view set up
@@ -193,8 +198,6 @@
 
 -(void)updateTodo: (Todo*) todo atIndexes: (NSIndexPath*) indexPath {
     self.todoList[indexPath.section][indexPath.row] = todo;
-    NSLog(@"%@",todo.deadline);
-    [self.todoListTableView reloadData];
 }
 
 @end
