@@ -12,6 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface Todo : NSObject
 
+@property (nonatomic) NSDate* deadline;
 @property (nonatomic) NSString* title;
 @property (nonatomic) NSString* todoDescription;
 @property (nonatomic) NSInteger priorityLevel;

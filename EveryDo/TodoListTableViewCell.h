@@ -17,6 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic) Todo* todo;
 @property (weak, nonatomic) IBOutlet UILabel *todoTitleLabel;
+@property (nonatomic) NSIndexPath *indexPath;
 
 
 -(void)addTodo:(Todo*) todo;

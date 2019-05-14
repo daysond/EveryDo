@@ -94,36 +94,71 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jv2-D7-lP7">
-                                <rect key="frame" x="8" y="96" width="359" height="674"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ddh-C8-mgF">
+                                <rect key="frame" x="8" y="88" width="359" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="PjH-gO-St0"/>
+                                </constraints>
                                 <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="qEh-n0-gmi">
+                                <rect key="frame" x="8" y="146" width="375" height="300"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="300" id="OFN-zB-dJ9"/>
+                                </constraints>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="2GF-AY-3rD">
+                                <rect key="frame" x="27.666666666666657" y="504" width="320" height="216"/>
+                                <date key="date" timeIntervalSinceReferenceDate="579557060.79289198">
+                                    <!--2019-05-14 20:04:20 +0000-->
+                                </date>
+                                <connections>
+                                    <action selector="datePickerChanged:" destination="PlI-kS-2Op" eventType="valueChanged" id="Eoo-lu-L2D"/>
+                                </connections>
+                            </datePicker>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Deadline" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bLf-d1-0Z8">
+                                <rect key="frame" x="117.66666666666669" y="454" width="140" height="42"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="35"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="IPE-A6-1WI" firstAttribute="bottom" secondItem="Jv2-D7-lP7" secondAttribute="bottom" constant="8" id="Rdu-BA-Esn"/>
-                            <constraint firstItem="Jv2-D7-lP7" firstAttribute="leading" secondItem="IPE-A6-1WI" secondAttribute="leading" constant="8" id="RoI-Ch-veW"/>
-                            <constraint firstItem="IPE-A6-1WI" firstAttribute="trailing" secondItem="Jv2-D7-lP7" secondAttribute="trailing" constant="8" id="UIk-uk-s2m"/>
-                            <constraint firstItem="Jv2-D7-lP7" firstAttribute="top" secondItem="IPE-A6-1WI" secondAttribute="top" constant="8" id="mTb-r4-lJj"/>
+                            <constraint firstItem="2GF-AY-3rD" firstAttribute="top" secondItem="bLf-d1-0Z8" secondAttribute="bottom" constant="8" id="7Jf-bR-97n"/>
+                            <constraint firstItem="IPE-A6-1WI" firstAttribute="trailing" secondItem="ddh-C8-mgF" secondAttribute="trailing" constant="8" id="HPc-YL-VXY"/>
+                            <constraint firstItem="qEh-n0-gmi" firstAttribute="trailing" secondItem="IPE-A6-1WI" secondAttribute="trailing" constant="8" id="OWN-QD-90e"/>
+                            <constraint firstItem="bLf-d1-0Z8" firstAttribute="top" secondItem="qEh-n0-gmi" secondAttribute="bottom" constant="8" id="Tuh-Uo-i9K"/>
+                            <constraint firstItem="qEh-n0-gmi" firstAttribute="leading" secondItem="IPE-A6-1WI" secondAttribute="leading" constant="8" id="ZDz-gr-m4j"/>
+                            <constraint firstItem="qEh-n0-gmi" firstAttribute="top" secondItem="ddh-C8-mgF" secondAttribute="bottom" constant="8" id="lHB-U7-oBh"/>
+                            <constraint firstItem="bLf-d1-0Z8" firstAttribute="centerX" secondItem="AZN-bU-i6Z" secondAttribute="centerX" id="tSi-x3-met"/>
+                            <constraint firstItem="2GF-AY-3rD" firstAttribute="centerX" secondItem="AZN-bU-i6Z" secondAttribute="centerX" id="vIg-V6-F0j"/>
+                            <constraint firstItem="ddh-C8-mgF" firstAttribute="leading" secondItem="IPE-A6-1WI" secondAttribute="leading" constant="8" id="yVh-1d-6te"/>
+                            <constraint firstItem="ddh-C8-mgF" firstAttribute="top" secondItem="IPE-A6-1WI" secondAttribute="top" id="zJP-ra-YCV"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="IPE-A6-1WI"/>
                     </view>
                     <navigationItem key="navigationItem" id="bfY-xI-NpW">
-                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="l4I-xz-GAA">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="l4I-xz-GAA">
                             <connections>
-                                <segue destination="AeX-jx-HcW" kind="showDetail" identifier="editorSegue" id="p8d-5P-rsB"/>
+                                <action selector="saveButtonTapped:" destination="PlI-kS-2Op" id="l37-GB-ap2"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="titleLabel" destination="Jv2-D7-lP7" id="Ktp-ox-jkT"/>
+                        <outlet property="datePicker" destination="2GF-AY-3rD" id="1Tf-8o-mpf"/>
+                        <outlet property="descriptionTextView" destination="qEh-n0-gmi" id="IUs-QR-jqz"/>
+                        <outlet property="titleTextfield" destination="ddh-C8-mgF" id="jgF-WP-q8e"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vwP-RL-KVO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="996" y="671"/>
+            <point key="canvasLocation" x="1026" y="609"/>
         </scene>
         <!--Add Todo View Controller-->
         <scene sceneID="Ped-jx-ilM">
@@ -276,7 +311,4 @@
             <point key="canvasLocation" x="682" y="-35"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="VmZ-tm-Q9z"/>
-    </inferredMetricsTieBreakers>
 </document>

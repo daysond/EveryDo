@@ -9,7 +9,9 @@
 #import "DetailViewController.h"
 
 @interface DetailViewController ()
-@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+@property (weak, nonatomic) IBOutlet UITextField *titleTextfield;
+@property (weak, nonatomic) IBOutlet UITextView *descriptionTextView;
+@property (weak, nonatomic) IBOutlet UIDatePicker *datePicker;
 
 @end
 
@@ -17,9 +19,24 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.titleLabel.text = self.todoDescription;
+    
+    self.titleTextfield.text = self.todo.title;
+    self.descriptionTextView.text = self.todo.todoDescription;
+    self.datePicker.date = self.todo.deadline;
+    
     // Do any additional setup after loading the view.
 }
+- (IBAction)datePickerChanged:(UIDatePicker *)sender {
+    self.todo.deadline = sender.date;
+}
+- (IBAction)saveButtonTapped:(UIBarButtonItem *)sender {
+    [self.navigationController popViewControllerAnimated:YES];
+    self.todo.title = self.titleTextfield.text;
+    self.todo.todoDescription = self.descriptionTextView.text;
+    [self.delegate updateTodo:self.todo atIndexes:self.indexPath];
+
+}
+
 
 
 

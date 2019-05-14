@@ -17,6 +17,7 @@
         _title = title;
         _todoDescription = description;
         _priorityLevel = level;
+        _deadline = [NSDate new];
     }
     return self;
 }

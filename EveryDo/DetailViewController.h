@@ -7,13 +7,20 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Todo.h"
 
 NS_ASSUME_NONNULL_BEGIN
+@protocol UpdateTodoDelegate <NSObject>
+
+-(void)updateTodo: (Todo*) todo atIndexes: (NSIndexPath*) indexPath;
+
+@end
 
 @interface DetailViewController : UIViewController
 
-@property (nonatomic) NSString* todoDescription;
-
+@property (nonatomic) Todo* todo;
+@property (nonatomic) NSIndexPath *indexPath;
+@property (nonatomic, weak) id<UpdateTodoDelegate> delegate;
 @end
 
 NS_ASSUME_NONNULL_END

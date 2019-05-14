@@ -12,7 +12,7 @@
 #import "DetailViewController.h"
 
 
-@interface ViewController () <UITableViewDataSource,UITableViewDelegate,AddTodoDelegate>
+@interface ViewController () <UITableViewDataSource,UITableViewDelegate,AddTodoDelegate,UpdateTodoDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *todoListTableView;
 @property (nonatomic) NSMutableArray <NSMutableArray<Todo*>*> *todoList;
 @property (nonatomic) NSArray <NSString*> *setionTitles;
@@ -38,6 +38,7 @@
     [self addTodo:todo WithPriority:todo.priorityLevel];
     
 }
+
 
 -(void)viewWillAppear:(BOOL)animated {
     
@@ -89,6 +90,7 @@
         cell = [[TodoListTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
     Todo *todo = self.todoList[indexPath.section][indexPath.row];
+    cell.indexPath = indexPath;
     [cell addTodo:todo];
     
     return cell;
@@ -102,12 +104,9 @@
     if (self.todoListTableView.isEditing == NO){
         [self.editButton setTitle:@"Done"];
         [self.todoListTableView setEditing:YES];
-    
-        
     } else {
         [self.todoListTableView setEditing:NO];
         self.editButton.title= @"Edit"; }
-    
 }
 
 
@@ -118,11 +117,9 @@
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath{
     
     Todo* todo = self.todoList[sourceIndexPath.section][sourceIndexPath.row];
-    NSLog(@"1: %ld",todo.priorityLevel);
     [self.todoList[sourceIndexPath.section] removeObject:todo];
     todo.priorityLevel = destinationIndexPath.section;
     [self.todoList[destinationIndexPath.section] insertObject:todo atIndex:destinationIndexPath.row];
-    NSLog(@"2: %ld",todo.priorityLevel);
     
 }
 
@@ -167,12 +164,6 @@
 }
 
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    
-    
-}
-
 #pragma mark segue
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -184,8 +175,10 @@
     
     if ([segue.identifier isEqualToString:@"todoDetail"]) {
         DetailViewController *dvc = segue.destinationViewController;
+        dvc.delegate = self;
         TodoListTableViewCell* cell = sender;
-        dvc.todoDescription = cell.todo.todoDescription;
+        dvc.indexPath = cell.indexPath;
+        dvc.todo = cell.todo;
         
     }
 
@@ -196,8 +189,12 @@
 - (void)addTodoWithTitle:(nonnull NSString *)title description:(nonnull NSString *)description priority:(NSInteger)priorityLevel {
     Todo *todo = [[Todo alloc]initWithTitle:title description:description priorityLevel:priorityLevel];
     [self addTodo:todo WithPriority:todo.priorityLevel];
-    NSLog(@"todolist: %@",self.todoList);
 }
 
+-(void)updateTodo: (Todo*) todo atIndexes: (NSIndexPath*) indexPath {
+    self.todoList[indexPath.section][indexPath.row] = todo;
+    NSLog(@"%@",todo.deadline);
+    [self.todoListTableView reloadData];
+}
 
 @end
